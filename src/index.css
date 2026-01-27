@@ -1,0 +1,33 @@
+:root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+body { margin: 0; background: #0b1220; color: #e7eefc; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+.card { background: #0f1a33; border: 1px solid #23355f; border-radius: 16px; padding: 20px; }
+.h1 { margin: 0 0 12px; font-size: 28px; }
+.h2 { margin: 14px 0 12px; font-size: 20px; }
+.h3 { margin: 16px 0 10px; font-size: 16px; }
+.p { margin: 0 0 12px; line-height: 1.6; color: #cfe0ff; }
+
+.btn { cursor: pointer; border: 0; border-radius: 12px; padding: 12px 14px; background: #2b64ff; color: white; font-weight: 700; }
+.btn--ghost { background: transparent; border: 1px solid #355aa8; color: #cfe0ff; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+.opt { width: 100%; background: #0c1730; border: 1px solid #23355f; border-radius: 16px; padding: 12px; text-align: left; color: inherit; cursor: pointer; }
+.opt:hover { border-color: #3e6bd1; }
+.opt--selected { border-color: #2b64ff; box-shadow: 0 0 0 2px rgba(43,100,255,.25); }
+.opt__imgWrap { border-radius: 12px; overflow: hidden; background: #081024; border: 1px solid #1c2b50; }
+.opt__img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.opt__label { margin-top: 10px; font-weight: 700; }
+
+.row { display: flex; gap: 10px; align-items: center; margin-top: 14px; justify-content: space-between; }
+.hint { font-size: 12px; color: #b6c9f3; }
+
+.progress { margin-bottom: 10px; }
+.progress__top { display: flex; justify-content: space-between; font-size: 12px; color: #b6c9f3; }
+.progress__bar { height: 10px; background: #0b1430; border-radius: 999px; overflow: hidden; border: 1px solid #1c2b50; }
+.progress__fill { height: 100%; background: #2b64ff; border-radius: 999px; }
+
+.badge { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #0b1430; border: 1px solid #2b64ff; font-weight: 800; letter-spacing: .08em; }
+.list { margin: 0; padding-left: 18px; color: #cfe0ff; }
