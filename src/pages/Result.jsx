@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { computeMbti } from '../utils/mbti'
+import { computeTypeCode } from '../utils/mbti'
 import { RESULTS } from '../data/results'
 
 export default function Result() {
@@ -16,25 +16,65 @@ export default function Result() {
     )
   }
 
-  const mbti = computeMbti(scores)
-  const detail = RESULTS[mbti] ?? {
-    title: `${mbti}`,
-    summary: 'results.js에 이 유형 설명을 추가하면 결과가 풍부해집니다.',
-    tips: ['RESULTS 객체에 해당 유형을 추가해 주세요.'],
+  const code = computeTypeCode(scores) // 예: EAB, ISD, ESB, IAD
+  const detail = RESULTS[code]
+
+  if (!detail) {
+    return (
+      <div className="card">
+        <h1 className="h1">당신의 결과 코드</h1>
+        <div className="badge">{code}</div>
+
+        <p className="p">
+          results.js에 <b>{code}</b> 결과 템플릿을 추가해 주세요.
+        </p>
+
+        <div className="row">
+          <Link className="btn btn--ghost" to="/">다시 하기</Link>
+          <button
+            className="btn"
+            type="button"
+            onClick={() => navigator.clipboard.writeText(window.location.href)}
+          >
+            링크 복사
+          </button>
+        </div>
+      </div>
+    )
   }
 
   return (
     <div className="card">
-      <h1 className="h1">당신의 타입</h1>
-      <div className="badge">{mbti}</div>
+      <h1 className="h1">당신의 결과</h1>
+      <div className="badge">{detail.code ?? code}</div>
 
       <h2 className="h2">{detail.title}</h2>
       <p className="p">{detail.summary}</p>
 
-      <h3 className="h3">추천 가이드</h3>
-      <ul className="list">
-        {detail.tips.map((t, i) => <li key={i}>{t}</li>)}
-      </ul>
+      {detail.recommend && (
+        <>
+          <h3 className="h3">추천 VR</h3>
+          <p className="p">{detail.recommend}</p>
+        </>
+      )}
+
+      {detail.buddy && (
+        <>
+          <h3 className="h3">환상의 버디</h3>
+          <p className="p">
+            <b>{detail.buddy.name}</b> — {detail.buddy.reason}
+          </p>
+        </>
+      )}
+
+      {Array.isArray(detail.tips) && detail.tips.length > 0 && (
+        <>
+          <h3 className="h3">추천 가이드</h3>
+          <ul className="list">
+            {detail.tips.map((t, i) => <li key={i}>{t}</li>)}
+          </ul>
+        </>
+      )}
 
       <div className="row">
         <Link className="btn btn--ghost" to="/">다시 하기</Link>
