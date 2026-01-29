@@ -59,7 +59,7 @@ export const QUESTIONS = [
   },
   {
     id: 'q8',
-    title: '당신이 더 소장하고 싶은 다이빙 사진은?',
+    title: '문제 8번',
     options: [
       { id: 'q8a', label: '문제 8번 A', img: `${BASE}images/q8_a.jpg`, score: { A: 1 } },
       { id: 'q8b', label: '문제 8번 S', img: `${BASE}images/q8_b.jpg`, score: { S: 1 } },
@@ -67,7 +67,7 @@ export const QUESTIONS = [
   },
   {
     id: 'q9',
-    title: '당신이 더 소장하고 싶은 다이빙 사진은?',
+    title: '문제 9번',
     options: [
       { id: 'q9a', label: '문제 9번 B', img: `${BASE}images/q9_a.jpg`, score: { B: 1 } },
       { id: 'q9b', label: '문제 9번 D', img: `${BASE}images/q9_b.jpg`, score: { D: 1 } },
