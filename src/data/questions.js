@@ -54,7 +54,7 @@ export const QUESTIONS = [
     title: '다이빙 마친 후, 로그북을 작성한다면 언제?',
     options: [
       { id: 'q7a', label: '피곤하니 일단 쉬고 여운을 즐기다 나중에 생각날 때 쓴다', img: `${BASE}images/q7_a.webp`, score: { E: 1 } },
-      { id: 'q7b', label: '기억 생생할 때 바로 로그북을 쓴다', img: `${BASE}images/q7_b.jpg`, score: { I: 1 } },
+      { id: 'q7b', label: '기억 생생할 때 바로 로그북을 쓴다', img: `${BASE}images/q7_b.png`, score: { I: 1 } },
     ],
   },
   {
