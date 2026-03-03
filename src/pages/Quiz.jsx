@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { QUESTIONS } from './questions.js'
-import { applyScore, computeTypeCode, initScores } from './mbti.js'
-import ImageOption from './ImageOption.jsx'
-import Progress from './Progress.jsx'
+import { QUESTIONS } from '../data/questions.js'
+import { applyScore, computeTypeCode, initScores } from '../utils/mbti.js'
+import ImageOption from '../components/ImageOption.jsx'
+import Progress from '../components/Progress.jsx'
 
 export default function Quiz() {
   const nav = useNavigate()
@@ -19,7 +19,9 @@ export default function Quiz() {
 
   const optionById = useMemo(() => {
     const map = {}
-    for (const qq of QUESTIONS) for (const opt of qq.options) map[opt.id] = opt
+    for (const qq of QUESTIONS)
+      for (const opt of qq.options)
+        map[opt.id] = opt
     return map
   }, [])
 
@@ -46,14 +48,11 @@ export default function Quiz() {
       return
     }
 
-    // 결과 공유/새로고침을 위해 code를 URL로 전달합니다.
     const code = computeTypeCode(nextScores)
-    try {
-      localStorage.setItem('diver-mbti:lastCode', code)
-      localStorage.setItem('diver-mbti:lastScores', JSON.stringify(nextScores))
-    } catch {
-      // 저장 실패는 치명적이지 않음
-    }
+
+    localStorage.setItem('diver-mbti:lastCode', code)
+    localStorage.setItem('diver-mbti:lastScores', JSON.stringify(nextScores))
+
     nav(`/result?code=${encodeURIComponent(code)}`, { replace: true })
   }
 
