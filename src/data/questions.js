@@ -59,18 +59,18 @@ export const QUESTIONS = [
   },
   {
     id: 'q8',
-    title: '문제 8번',
+    title: '마지막 날, 선택할 수 있는 추가 일정이 생겼다. 당신은?',
     options: [
-      { id: 'q8a', label: '문제 8번 A', img: `${BASE}images/q8_a.jpg`, score: { A: 1 } },
-      { id: 'q8b', label: '문제 8번 S', img: `${BASE}images/q8_b.jpg`, score: { S: 1 } },
+      { id: 'q8a', label: '"한 번뿐이야!" 즉흥으로 새로운 포인트를 추가한다', img: `${BASE}images/q8_a.jpg`, score: { A: 1 } },
+      { id: 'q8b', label: '"안전하게 마무리!" 익숙한 포인트에서 컨디션을 우선한다', img: `${BASE}images/q8_b.jpg`, score: { S: 1 } },
     ],
   },
   {
     id: 'q9',
-    title: '문제 9번',
+    title: '촬영 vs 관찰, 물속에서 당신의 집중은 어디로?',
     options: [
-      { id: 'q9a', label: '문제 9번 B', img: `${BASE}images/q9_a.jpg`, score: { B: 1 } },
-      { id: 'q9b', label: '문제 9번 D', img: `${BASE}images/q9_b.jpg`, score: { D: 1 } },
+      { id: 'q9a', label: '장면 전체 분위기를 담는 와이드샷이 좋다', img: `${BASE}images/q9_a.jpg`, score: { B: 1 } },
+      { id: 'q9b', label: '작은 생물을 찾아 디테일을 파고드는 게 좋다', img: `${BASE}images/q9_b.jpg`, score: { D: 1 } },
     ],
   }
 ]

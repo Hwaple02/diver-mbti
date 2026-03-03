@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { QUESTIONS } from '../data/questions'
-import { applyScore, initScores } from '../utils/mbti'
-import ImageOption from '../components/ImageOption'
-import Progress from '../components/Progress'
+import { QUESTIONS } from './questions.js'
+import { applyScore, computeTypeCode, initScores } from './mbti.js'
+import ImageOption from './ImageOption.jsx'
+import Progress from './Progress.jsx'
 
 export default function Quiz() {
   const nav = useNavigate()
@@ -41,8 +41,20 @@ export default function Quiz() {
     setAnswers(nextAnswers)
     setScores(nextScores)
 
-    if (idx + 1 < total) setIdx(idx + 1)
-    else nav('/result', { state: { scores: nextScores } })
+    if (idx + 1 < total) {
+      setIdx(idx + 1)
+      return
+    }
+
+    // 결과 공유/새로고침을 위해 code를 URL로 전달합니다.
+    const code = computeTypeCode(nextScores)
+    try {
+      localStorage.setItem('diver-mbti:lastCode', code)
+      localStorage.setItem('diver-mbti:lastScores', JSON.stringify(nextScores))
+    } catch {
+      // 저장 실패는 치명적이지 않음
+    }
+    nav(`/result?code=${encodeURIComponent(code)}`, { replace: true })
   }
 
   function goPrev() {
